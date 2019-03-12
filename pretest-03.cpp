@@ -16,51 +16,43 @@ void banyakData (int& n){
 	cout<<"masukan banyak data	: ";
 	cin>>n;
 }
-void inpuMhs(larikMhs& mhs,int n){
+void inputMhs(larikMhs& mhs,int n){
 	for(int i=0;i<n;i++){
+		cout<<"npm\t: ";
+		cin>>mhs[i].npm;
 		cout<<"nama\t: ";
-		cin>>r_mhs.npm[i]<<endl;
+		cin>>mhs[i].nama;
 		cout<<"nama\t: ";
-		cin>>r_mhs.nama[i]<<endl;
-		cout<<"nama\t: ";
-		cin>>r_mhs.ipk[i]<<endl;
+		cin>>mhs[i].ipk;
 	}
-	
+ cout<<endl;
 }
 void cetakMhs(larikMhs& mhs,int n){
 	for(int i=0;i<n;i++){
-		cout<<r_mhs.npm[i]<<"  "<<r_mhs.nama[i]<<"  "<<r_mhs.ipk[i]<<endl;
+		cout<<mhs[i].npm<<"  "<<mhs[i].nama<<"  "<<mhs[i].ipk<<endl;
 	}
 }
 void sortNPM(larikMhs& mhs,int n){
-   
-    for(i=0; i<n; i++)
+    int i;
+    r_mhs temp;
+    for(i=1; i<n; i++)
     {
-        for(j=i+1; j<n; j++)
-        {
-            
-            if(npm[j] < npm[i])
-            {
-                temp = npm[i];
-                npm[i] = npm[j];
-                npm[j] = temp;
-            }
+        temp = mhs[i];
+        while(i>0 && mhs[i-1].npm>temp.npm){
+            mhs[i]= mhs[i-1];
+            i = i-1;
         }
+        mhs[i]= temp;
     }
-    
-    for(i=0; i<n; i++)
-    {
-        cout<<n[i]<<endl;
-    }
- 
-    return 0;
 }
- 
+
+
 int main(){
 	int n;
-	banyakData(n);
-	inputMhs(mhs,n);
-	cetakMhs(mhs,n);
-	sortNPM(mhs,n);
+	larikMhs mhs;
+    banyakData(n);
+    inputMhs(mhs,n);
+    cetakMhs(mhs, n);
+    sortNPM(mhs, n);
 }
 
